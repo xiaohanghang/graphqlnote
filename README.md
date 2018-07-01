@@ -70,7 +70,7 @@ class Employee(Base):
                         cascade='delete,all'))
 ```
 
-   2.model转化为graphql类型
+2.model转化为graphql类型
 
 ```py
 Users = create_node_class_gql_object(UserModel)
@@ -86,11 +86,113 @@ append_graphql_relationhip(Comments)
 
 3.schema生成
 
-
-
 ```py
 schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations, types=[Users,Departments,Employees,Roles])
 ```
+
+**效果显示：**
+
+1.列表查询：\(manytoono or onetoone\)
+
+```
+{
+  
+  connectionAllEmployee{
+    edges{
+      node{
+        id
+        name
+        hiredOn
+        department{
+          id
+          name
+        }
+        role{
+          id
+          name
+        }
+      }
+    }
+  }
+  
+}
+```
+
+效果：
+
+```
+{
+  "data": {
+    "connectionAllEmployee": {
+      "edges": [
+        {
+          "node": {
+            "id": "1",
+            "name": "Peter",
+            "hiredOn": "2018-07-01T13:01:59",
+            "department": {
+              "id": "1",
+              "name": "Engineering"
+            },
+            "role": {
+              "id": "Um9sZTpOb25l",
+              "name": "engineer"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "2",
+            "name": "Roy",
+            "hiredOn": "2018-07-01T13:01:59",
+            "department": {
+              "id": "1",
+              "name": "Engineering"
+            },
+            "role": {
+              "id": "Um9sZTpOb25l",
+              "name": "engineer"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "3",
+            "name": "Tracy",
+            "hiredOn": "2018-07-01T13:01:59",
+            "department": {
+              "id": "2",
+              "name": "Human Resources"
+            },
+            "role": {
+              "id": "Um9sZTpOb25l",
+              "name": "manager"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
