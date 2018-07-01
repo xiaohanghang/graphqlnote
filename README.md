@@ -70,7 +70,7 @@ class Employee(Base):
                         cascade='delete,all'))
 ```
 
-      2.**graphql类型转化：**
+   2.model转化为graphql类型
 
 ```py
 Users = create_node_class_gql_object(UserModel)
@@ -84,7 +84,9 @@ append_graphql_relationhip(Posts)
 append_graphql_relationhip(Comments)
 ```
 
-      3.**schema生成：**
+3.schema生成
+
+
 
 ```py
 schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations, types=[Users,Departments,Employees,Roles])
