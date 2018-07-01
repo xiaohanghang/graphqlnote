@@ -522,5 +522,25 @@ in过滤：
 
 2.单项查询：
 
+```
+{
+  findEmployee(PrimaryId:1){
+    id
+    name
+  }
+}
+```
+
+```
+{
+  "data": {
+    "findEmployee": {
+      "id": "1",
+      "name": "Peter"
+    }
+  }
+}
+```
+
 
 
