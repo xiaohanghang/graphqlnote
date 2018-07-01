@@ -96,7 +96,7 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
 
 ```
 {
-  
+
   connectionAllEmployee{
     edges{
       node{
@@ -114,7 +114,7 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
       }
     }
   }
-  
+
 }
 ```
 
@@ -175,24 +175,6 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
   }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
