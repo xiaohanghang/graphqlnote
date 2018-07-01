@@ -250,11 +250,11 @@ onetomany：
 }
 ```
 
-排序：
+排序+分页：
 
 ```
 {
-  connectionAllEmployee(Direction:"desc",Sort:"name"){
+  connectionAllEmployee(Direction:"desc",Sort:"name",Num:2,Page:1){
     edges{
       node
       {
@@ -301,21 +301,6 @@ onetomany：
           "node": {
             "id": "2",
             "name": "Roy",
-            "hiredOn": "2018-07-01T14:39:40",
-            "department": {
-              "id": "1",
-              "name": "Engineering"
-            },
-            "role": {
-              "roleId": "2",
-              "name": "engineer"
-            }
-          }
-        },
-        {
-          "node": {
-            "id": "1",
-            "name": "Peter",
             "hiredOn": "2018-07-01T14:39:40",
             "department": {
               "id": "1",
