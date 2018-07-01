@@ -176,5 +176,58 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
 }
 ```
 
+onetomany：
+
+```
+{
+  connectionAllPost{
+    edges{
+      node{
+        id
+        tag
+        body
+        comments{
+          id
+          name
+          body
+        }
+      }
+    }
+  }
+}
+```
+
+效果：
+
+```
+{
+  "data": {
+    "connectionAllPost": {
+      "edges": [
+        {
+          "node": {
+            "id": "1",
+            "tag": "hello python",
+            "body": "sounds very well",
+            "comments": [
+              {
+                "id": "1",
+                "name": "zhangsan",
+                "body": "yep you are right"
+              },
+              {
+                "id": "2",
+                "name": "lisi",
+                "body": "yep you are wrong"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 
 
