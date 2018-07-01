@@ -144,14 +144,6 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
 }
 ```
 
-
-
-
-
-
-
-
-
 onetomany：
 
 ```
@@ -197,6 +189,59 @@ onetomany：
                 "body": "yep you are wrong"
               }
             ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+过滤：
+
+```
+{
+  connectionAllEmployee(name:"Peter"){
+    edges{
+      node
+      {
+        id
+        name
+        hiredOn
+        department{
+          id
+          name
+        }
+        role{
+          roleId
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+效果：
+
+```py
+{
+  "data": {
+    "connectionAllEmployee": {
+      "edges": [
+        {
+          "node": {
+            "id": "1",
+            "name": "Peter",
+            "hiredOn": "2018-07-01T13:59:15",
+            "department": {
+              "id": "1",
+              "name": "Engineering"
+            },
+            "role": {
+              "roleId": "2",
+              "name": "engineer"
+            }
           }
         }
       ]
