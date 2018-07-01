@@ -92,12 +92,11 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
 
 **效果显示：**
 
-1.列表查询：\(manytoono or onetoone\)
+1.列表分页查询：\(manytoono or onetoone\)
 
 ```
 {
-
-  connectionAllEmployee{
+  connectionAllEmployee(Num:1,Page:1){
     edges{
       node{
         id
@@ -114,7 +113,6 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
       }
     }
   }
-
 }
 ```
 
@@ -129,7 +127,7 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
           "node": {
             "id": "1",
             "name": "Peter",
-            "hiredOn": "2018-07-01T13:01:59",
+            "hiredOn": "2018-07-01T13:09:19",
             "department": {
               "id": "1",
               "name": "Engineering"
@@ -137,36 +135,6 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
             "role": {
               "id": "Um9sZTpOb25l",
               "name": "engineer"
-            }
-          }
-        },
-        {
-          "node": {
-            "id": "2",
-            "name": "Roy",
-            "hiredOn": "2018-07-01T13:01:59",
-            "department": {
-              "id": "1",
-              "name": "Engineering"
-            },
-            "role": {
-              "id": "Um9sZTpOb25l",
-              "name": "engineer"
-            }
-          }
-        },
-        {
-          "node": {
-            "id": "3",
-            "name": "Tracy",
-            "hiredOn": "2018-07-01T13:01:59",
-            "department": {
-              "id": "2",
-              "name": "Human Resources"
-            },
-            "role": {
-              "id": "Um9sZTpOb25l",
-              "name": "manager"
             }
           }
         }
@@ -175,6 +143,14 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
   }
 }
 ```
+
+
+
+
+
+
+
+
 
 onetomany：
 
