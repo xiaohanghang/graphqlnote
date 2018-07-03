@@ -6,13 +6,13 @@
 
 ### 基本功能：
 
-* 支持复用sqlalchemy模型，并提供mongo模型API
+* **支持复用sqlalchemy模型，并提供mongo模型API**
 
-* 支持原devrest分页、过滤、搜索、子关系查询、排序、黑白名单等功能
+* **支持原devrest分页、过滤、搜索、子关系查询、排序、黑白名单等功能**
 
-* graphql支持多数据源聚合\(mysql,mongo,Rest APi、ELK\)等功能
+* **graphql支持多数据源聚合\(mysql,mongo,Rest APi、ELK\)等功能**
 
-* 简单易用，使用理念与devrest保持一致，并提供用户自定义
+* **简单易用，使用理念与devrest保持一致，并提供用户自定义**
 
 ### 下载使用：
 
