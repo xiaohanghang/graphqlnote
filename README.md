@@ -542,5 +542,33 @@ in过滤：
 }
 ```
 
+3.REST API调用：
+
+```
+{
+  findRole(name:"manager"){
+    roleId
+    name
+    github
+    githubApiStatusCode
+  }
+}
+```
+
+效果：
+
+```
+{
+  "data": {
+    "findRole": {
+      "roleId": "1",
+      "name": "manager",
+      "github": "{u'public_repos': 0, u'site_admin': False, u'subscriptions_url': u'https://api.github.com/users/manager/subscriptions', u'gravatar_id': u'', u'hireable': None, u'id': 395360, u'followers_url': u'https://api.github.com/users/manager/followers', u'following_url': u'https://api.github.com/users/manager/following{/other_user}', u'blog': u'', u'followers': 2, u'location': None, u'type': u'User', u'email': None, u'bio': None, u'gists_url': u'https://api.github.com/users/manager/gists{/gist_id}', u'company': None, u'events_url': u'https://api.github.com/users/manager/events{/privacy}', u'html_url': u'https://github.com/manager', u'updated_at': u'2014-01-13T13:46:08Z', u'node_id': u'MDQ6VXNlcjM5NTM2MA==', u'received_events_url': u'https://api.github.com/users/manager/received_events', u'starred_url': u'https://api.github.com/users/manager/starred{/owner}{/repo}', u'public_gists': 0, u'name': None, u'organizations_url': u'https://api.github.com/users/manager/orgs', u'url': u'https://api.github.com/users/manager', u'created_at': u'2010-09-11T06:34:52Z', u'avatar_url': u'https://avatars3.githubusercontent.com/u/395360?v=4', u'repos_url': u'https://api.github.com/users/manager/repos', u'following': 0, u'login': u'manager'}",
+      "githubApiStatusCode": "200"
+    }
+  }
+}
+```
+
 
 
