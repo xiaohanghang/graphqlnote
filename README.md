@@ -70,7 +70,7 @@ class Employee(Base):
                         cascade='delete,all'))
 ```
 
-2.model转化为graphql类型
+**2.model转化为graphql类型**
 
 ```py
 Users = create_node_class_gql_object(UserModel)
@@ -84,7 +84,7 @@ append_graphql_relationhip(Posts)
 append_graphql_relationhip(Comments)
 ```
 
-3.schema生成
+**3.schema生成**
 
 ```py
 schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations, types=[Users,Departments,Employees,Roles])
@@ -92,7 +92,7 @@ schema = graphene.Schema(query=create_query_schema(attrs), mutation=MyMutations,
 
 **效果显示：**
 
-1.列表分页查询：\(manytoono or onetoone\)
+**1.列表分页查询：\(manytoono or onetoone\)**
 
 ```
 {
@@ -520,7 +520,7 @@ in过滤：
 }
 ```
 
-2.单项查询：
+**2.单项查询：**
 
 ```
 {
@@ -542,7 +542,35 @@ in过滤：
 }
 ```
 
-3.REST API调用：
+**3.REST API动态显示调用：**
+
+* model定义：
+
+```py
+class Role(Base):
+    class Meta:
+        auto_add_column = ["github", "github_api_status_code"]
+    __tablename__ = 'roles'
+    role_id = Column(Integer, primary_key=True)
+    name = Column(String)
+    def auto_add_columns(self, *args, **kwargs):
+        import requests
+        result = OrderedDict()
+        mapper = sqlalchemyinspect(self).mapper
+        columns = sqlalchemyinspect(self).mapper.columns
+        for name, column_name in columns.items():
+            value = getattr(self, name, None)
+            result[to_snake_case(name)] = value
+        if result.get('name'):
+            github_res = requests.get(
+                'https://api.github.com/users/%s' % result['name']
+            )
+            result['github'] = github_res.json()
+            result['github_api_status_code'] = github_res.status_code
+        return result
+```
+
+上述代码中定义的auto_add_column为新增的Rest api列，然后再定义auto\__add\__columns方法，实现rest API的动态列添加。
 
 ```
 {
