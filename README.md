@@ -6,13 +6,26 @@
 
 ### 基本功能：
 
-* 支持复用sqlalchemy模型
+* 支持复用sqlalchemy模型，并提供mongo模型API
 
 * 支持原devrest分页、过滤、搜索、子关系查询、排序、黑白名单等功能
 
 * graphql支持多数据源聚合\(mysql,mongo,Rest APi、ELK\)等功能
 
-### 
+* 简单易用，使用理念与devrest保持一致，并提供用户自定义
+
+### 下载使用：
+
+```py
+pip install -r requirements.txt
+```
+
+### 版本支持：
+
+```
+graphene == 1.4
+
+```
 
 ## 接口参数请求：
 
@@ -570,7 +583,7 @@ class Role(Base):
         return result
 ```
 
-上述代码中定义的auto_add_column为新增的Rest api列，然后再定义auto\__add\__columns方法，实现rest API的动态列添加。
+上述代码中定义的auto\_add\_column为新增的Rest api列，然后再定义auto\_\_add\_\_columns方法，实现rest API的动态列添加。
 
 ```
 {
