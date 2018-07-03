@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ### 版本支持：
 
-
+目前开发版本只支持graphene==1.4
 
 ```
 graphene == 1.4
