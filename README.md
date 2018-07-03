@@ -16,9 +16,15 @@
 
 ### 下载使用：
 
+1. **下载所需安装包**
+
 ```py
 pip install -r requirements.txt
 ```
+
+   2.  **定义sqlalchemy \| mongoengine的model，再使用本组件中create\_query\_schema函数，将model转化的graphql传递进去，绑定路由到app，即可实现graphql灵活的查询功能。**
+
+   3.**若需要调用第三方公共接口或者多种数据库中的聚合，在model层定义auto\_**_**add\_**_**column函数，并定义需要添加的columns，实现数据聚合。**
 
 ### 版本支持：
 
