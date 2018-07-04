@@ -639,7 +639,7 @@ class Role(Base):
 }
 ```
 
-列表查询：
+列表查询\(list\)：
 
 ```
 {
@@ -671,6 +671,52 @@ class Role(Base):
         "githubApiStatusCode": "200"
       }
     ]
+  }
+}
+```
+
+connection+node分页查询：
+
+```
+{
+  connectionAllRole{
+    edges{
+      node{
+        roleId
+        name
+        github
+        githubApiStatusCode
+      }
+    }
+  }
+}
+```
+
+效果显示：
+
+```
+{
+  "data": {
+    "connectionAllRole": {
+      "edges": [
+        {
+          "node": {
+            "roleId": "1",
+            "name": "manager",
+            "github": "{u'public_repos': 0, u'site_admin': False, u'subscriptions_url': u'https://api.github.com/users/manager/subscriptions', u'gravatar_id': u'', u'hireable': None, u'id': 395360, u'followers_url': u'https://api.github.com/users/manager/followers', u'following_url': u'https://api.github.com/users/manager/following{/other_user}', u'blog': u'', u'followers': 2, u'location': None, u'type': u'User', u'email': None, u'bio': None, u'gists_url': u'https://api.github.com/users/manager/gists{/gist_id}', u'company': None, u'events_url': u'https://api.github.com/users/manager/events{/privacy}', u'html_url': u'https://github.com/manager', u'updated_at': u'2014-01-13T13:46:08Z', u'node_id': u'MDQ6VXNlcjM5NTM2MA==', u'received_events_url': u'https://api.github.com/users/manager/received_events', u'starred_url': u'https://api.github.com/users/manager/starred{/owner}{/repo}', u'public_gists': 0, u'name': None, u'organizations_url': u'https://api.github.com/users/manager/orgs', u'url': u'https://api.github.com/users/manager', u'created_at': u'2010-09-11T06:34:52Z', u'avatar_url': u'https://avatars3.githubusercontent.com/u/395360?v=4', u'repos_url': u'https://api.github.com/users/manager/repos', u'following': 0, u'login': u'manager'}",
+            "githubApiStatusCode": "200"
+          }
+        },
+        {
+          "node": {
+            "roleId": "2",
+            "name": "engineer",
+            "github": "{u'public_repos': 9, u'site_admin': False, u'subscriptions_url': u'https://api.github.com/users/engineer/subscriptions', u'gravatar_id': u'', u'hireable': True, u'id': 997668, u'followers_url': u'https://api.github.com/users/engineer/followers', u'following_url': u'https://api.github.com/users/engineer/following{/other_user}', u'blog': u'https://medium.com/@engineer', u'followers': 15, u'location': u'M\\xe9xico', u'type': u'User', u'email': None, u'bio': u'(\\u033f\\u2580\\u033f\\u2009\\u033f\\u0139\\u032f\\u033f\\u033f\\u2580\\u033f \\u033f)\\u0304', u'gists_url': u'https://api.github.com/users/engineer/gists{/gist_id}', u'company': u'M\\xe9xico Conectado', u'events_url': u'https://api.github.com/users/engineer/events{/privacy}', u'html_url': u'https://github.com/engineer', u'updated_at': u'2018-06-05T18:24:08Z', u'node_id': u'MDQ6VXNlcjk5NzY2OA==', u'received_events_url': u'https://api.github.com/users/engineer/received_events', u'starred_url': u'https://api.github.com/users/engineer/starred{/owner}{/repo}', u'public_gists': 0, u'name': u'Pablo Casanova', u'organizations_url': u'https://api.github.com/users/engineer/orgs', u'url': u'https://api.github.com/users/engineer', u'created_at': u'2011-08-23T00:47:18Z', u'avatar_url': u'https://avatars1.githubusercontent.com/u/997668?v=4', u'repos_url': u'https://api.github.com/users/engineer/repos', u'following': 62, u'login': u'engineer'}",
+            "githubApiStatusCode": "200"
+          }
+        }
+      ]
+    }
   }
 }
 ```
