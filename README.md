@@ -16,15 +16,22 @@
 
 ### 下载使用：
 
-**   1. 下载所需安装包**
+######    1. 下载所需安装包
 
 ```py
 pip install -r requirements.txt
 ```
 
-**   2.  定义sqlalchemy \| mongoengine的model，再使用本组件中create\_query\_schema函数，将model转化的graphql传递进去，绑定路由到app，即可实现graphql灵活的查询功能。**
+###### **   2.  定义sqlalchemy \| mongoengine的model，再使用本组件中create\_query\_schema函数，将model转化的graphql传递进去，绑定路由到app，即可实现graphql灵活的查询功能。**
 
-**   3.  若需要调用第三方公共接口或者多种数据库中的聚合，在model层定义auto\_**_**add**_**\_column函数，并定义需要添加的columns，实现数据聚合。**
+###### **   3.  若需要调用第三方公共接口或者多种数据库中的聚合，在model层定义auto\_**_**add**_**\_column函数，并定义需要添加的columns，实现数据聚合。**
+
+######    4.运行app
+
+```py
+> python app.py
+Running on http://127.0.0.1:5000/
+```
 
 ### 版本支持：
 
@@ -38,7 +45,7 @@ graphene == 1.4
 
 ### Example：
 
-1. **model定义：**
+1. **model定义：用例涵盖模型之间多种关联关系**
 
 ```py
 class Post(Base):
@@ -53,22 +60,34 @@ class Comment(Base):
     name = Column(String(255))
     body = Column(Text)
     post_id = Column(String(20), ForeignKey("posts.id"))
-class User(Base):
-    __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    name = Column(Text)
-    email = Column(Text)
-    username = Column(String(255))
 class Department(Base):
     __tablename__ = 'department'
     id = Column(Integer, primary_key=True)
     name = Column(String)
 class Role(Base):
+    class Meta:
+        auto_add_column = ["github", "github_api_status_code"]
     __tablename__ = 'roles'
     role_id = Column(Integer, primary_key=True)
     name = Column(String)
+    def auto_add_columns(self, *args, **kwargs):
+        import requests
+        result = OrderedDict()
+        mapper = sqlalchemyinspect(self).mapper
+        columns = sqlalchemyinspect(self).mapper.columns
+        for name, column_name in columns.items():
+            value = getattr(self, name, None)
+            result[to_snake_case(name)] = value
+        if result.get('name'):
+            github_res = requests.get(
+                'https://api.github.com/users/%s' % result['name']
+            )
+            result['github'] = github_res.json()
+            result['github_api_status_code'] = github_res.status_code
+        return result
 class Employee(Base):
     __tablename__ = 'employee'
+    __match_fields__ = ['name']
     id = Column(Integer, primary_key=True)
     name = Column(String)
     # Use default=func.now() to set the default hiring time
