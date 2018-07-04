@@ -361,21 +361,11 @@ onetomany：
 
 ```
 {
-  connectionAllEmployee(Num:2,Page:1,Match:"Ro,Pe"){
+  connectionAllRole(MatchField:"name",Match:"mana"){
     edges{
-      node
-      {
-        id
+      node{
+        roleId
         name
-        hiredOn
-        department{
-          id
-          name
-        }
-        role{
-          roleId
-          name
-        }
       }
     }
   }
@@ -387,36 +377,12 @@ onetomany：
 ```
 {
   "data": {
-    "connectionAllEmployee": {
+    "connectionAllRole": {
       "edges": [
         {
           "node": {
-            "id": "1",
-            "name": "Peter",
-            "hiredOn": "2018-07-01T14:54:33",
-            "department": {
-              "id": "1",
-              "name": "Engineering"
-            },
-            "role": {
-              "roleId": "2",
-              "name": "engineer"
-            }
-          }
-        },
-        {
-          "node": {
-            "id": "2",
-            "name": "Roy",
-            "hiredOn": "2018-07-01T14:54:33",
-            "department": {
-              "id": "1",
-              "name": "Engineering"
-            },
-            "role": {
-              "roleId": "2",
-              "name": "engineer"
-            }
+            "roleId": "1",
+            "name": "manager"
           }
         }
       ]
