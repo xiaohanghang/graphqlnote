@@ -16,9 +16,9 @@
 
 #### TODO:
 
-*   **mongoengine+graphql查询**
-* **  权限控制**
-*   **elk+graphql查询**
+* **mongoengine+graphql查询**
+* **权限控制**
+* **elk+graphql查询**
 
 ### 下载使用：
 
