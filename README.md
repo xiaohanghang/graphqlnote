@@ -14,6 +14,29 @@
 
 * **简单易用，使用理念与devrest保持一致，并提供用户自定义**
 
+#### 目录结构及基本作用：
+
+```
+├── app.py              应用程序启动
+├── database.py         sqlalchemy数据库模型实例
+├── exception.py        异常类处理
+├── exp_format.py       组合打印信息
+├── log.py              日志打印
+├── models              
+│   ├── base.py         模型基类
+│   ├── converter.py    类型转化
+│   ├── __init__.py
+│   └── registry.py     类型关联注册
+├── mongodatabase.py    mongo数据库模型实例
+├── mutations.py        增、删改
+├── query.py            查询功能
+├── README.md           文档
+├── requirements.txt     依赖
+├── schema.py            graphql定义schema
+└── utils.py             工具类(分页等)
+
+```
+
 #### TODO:
 
 * **mongoengine+graphql查询**
@@ -39,7 +62,7 @@ pip install -r requirements.txt
 Running on http://127.0.0.1:5000/
 ```
 
-###### 5.访问 [http://127.0.0.1:5000/graphql](http://127.0.0.1:5000/graphql)
+###### 5.访问 [http://127.0.0.1:5000/graphql](http://127.0.0.1:5000/graphql) \| 或者用其他接口测试工具\(建议使用制定的后端面板\(带自省功能\)\)
 
 ### 版本支持：
 
