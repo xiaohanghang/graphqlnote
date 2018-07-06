@@ -23,10 +23,10 @@
 ├── exp_format.py       组合打印信息
 ├── log.py              日志打印
 ├── models              
-│   ├── base.py         模型基类
-│   ├── converter.py    类型转化
-│   ├── __init__.py
-│   └── registry.py     类型关联注册
+│   ├── base.py         模型基类
+│   ├── converter.py    类型转化
+│   ├── __init__.py
+│   └── registry.py     类型关联注册
 ├── mongodatabase.py    mongo数据库模型实例
 ├── mutations.py        增、删改
 ├── query.py            查询功能
@@ -34,7 +34,6 @@
 ├── requirements.txt     依赖
 ├── schema.py            graphql定义schema
 └── utils.py             工具类(分页等)
-
 ```
 
 #### TODO:
