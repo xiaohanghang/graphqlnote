@@ -717,5 +717,146 @@ connection+node分页查询：
 }
 ```
 
+**4.mongodata查询：**
+
+将数据库换成mongoengine定义的models
+
+```py
+from devrest.graphqldev.schema import connect_schema_gen
+
+import database
+import mongodatabase
+
+
+schema = connect_schema_gen(mongodatabase)
+
+```
+
+查询：
+
+列表查询
+
+```
+{
+  connectionAllEmployee{
+    edges{
+      node{
+        id
+        name
+        hiredOn
+        department{
+          id
+          name
+        }
+        roles{
+          id
+          name
+        }
+        tasks{ 
+          deadline
+          name
+        }
+      }
+    }
+  }
+}
+
+```
+
+查询结果
+
+```
+{
+  "data": {
+    "connectionAllEmployee": {
+      "edges": [
+        {
+          "node": {
+            "id": "5b4816cc1d41c822fe7b0129",
+            "name": "Tracy",
+            "hiredOn": "2018-07-12 20:04:44.337877",
+            "department": {
+              "id": "5b4816cc1d41c822fe7b0126",
+              "name": "Human Resources"
+            },
+            "roles": [
+              {
+                "id": "5b4816cc1d41c822fe7b0128",
+                "name": "engineer"
+              },
+              {
+                "id": "5b4816cc1d41c822fe7b0127",
+                "name": "manager"
+              }
+            ],
+            "tasks": []
+          }
+        },
+        {
+          "node": {
+            "id": "5b4816cc1d41c822fe7b012a",
+            "name": "Peter",
+            "hiredOn": "2018-07-12 20:04:44.338467",
+            "department": {
+              "id": "5b4816cc1d41c822fe7b0125",
+              "name": "Engineering"
+            },
+            "roles": [
+              {
+                "id": "5b4816cc1d41c822fe7b0128",
+                "name": "engineer"
+              }
+            ],
+            "tasks": [
+              {
+                "deadline": "2018-07-12 20:04:44.337766",
+                "name": "Debug"
+              },
+              {
+                "deadline": "2018-07-12 20:04:44.337825",
+                "name": "Test"
+              }
+            ]
+          }
+        },
+        {
+          "node": {
+            "id": "5b4816cc1d41c822fe7b012b",
+            "name": "Roy",
+            "hiredOn": "2018-07-12 20:04:44.339003",
+            "department": {
+              "id": "5b4816cc1d41c822fe7b0125",
+              "name": "Engineering"
+            },
+            "roles": [
+              {
+                "id": "5b4816cc1d41c822fe7b0128",
+                "name": "engineer"
+              }
+            ],
+            "tasks": [
+              {
+                "deadline": "2018-07-12 20:04:44.337766",
+                "name": "Debug"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
