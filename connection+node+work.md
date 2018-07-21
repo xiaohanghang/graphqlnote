@@ -4,6 +4,11 @@
 
 ## features:
 
-* 
+Relay connections:
+
+*    Relay proposes a standard to define a has\_many relationship for graphql field.
+
+
+
 
 
