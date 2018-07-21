@@ -6,9 +6,9 @@
 
 Relay connections:
 
-*    Relay proposes a standard to define a has\_many relationship for graphql field.
+* Relay proposes a standard to define a has\_many relationship for graphql field.This standard defines a common structure that   
 
-
+allow Relay to paginate and filter the results in an efficient way by using cursors,which i'll explain in abit.
 
 
 
